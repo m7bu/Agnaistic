@@ -1298,3 +1298,112 @@
   </script>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="AI Personas" />
+  <meta id="meta-theme-color" name="theme-color" content="#000000" />
+  <title>AI Personas Studio</title>
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            ios: {
+              blue: '#007AFF',
+              green: '#34C759',
+              red: '#FF3B30',
+              gray: '#8E8E93',
+              lightBg: '#F2F2F7',
+              lightCard: '#FFFFFF',
+              lightBubble: '#E9E9EB',
+              darkBg: '#000000',
+              darkCard: '#1C1C1E',
+              darkBubble: '#2C2C2E',
+              darkBorder: '#2C2C2E',
+              lightBorder: '#E5E5EA'
+            }
+          },
+          fontFamily: {
+            sans: ['-apple-system', 'BlinkMacSystemFont', '"SF Pro Display"', '"SF Pro Text"', 'Helvetica Neue', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+
+  <link rel="manifest" id="manifest-placeholder" />
+
+  <style>
+    :root {
+      --sat: env(safe-area-inset-top, 0px);
+      --sab: env(safe-area-inset-bottom, 0px);
+    }
+    body {
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+    .safe-top { padding-top: max(14px, var(--sat)); }
+    .safe-bottom { padding-bottom: max(14px, var(--sab)); }
+
+    /* Fix Tailwind display override clashes */
+    .app-hidden {
+      display: none !important;
+    }
+    .app-flex {
+      display: flex !important;
+    }
+
+    /* Scrollbars */
+    ::-webkit-scrollbar { width: 4px; height: 4px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: rgba(142, 142, 147, 0.3); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: rgba(142, 142, 147, 0.5); }
+
+    /* Typing pulse */
+    @keyframes dotPulse {
+      0%, 80%, 100% { transform: scale(0.6); opacity: 0.35; }
+      40% { transform: scale(1.05); opacity: 1; }
+    }
+    .dot-1 { animation: dotPulse 1.3s infinite ease-in-out; }
+    .dot-2 { animation: dotPulse 1.3s infinite ease-in-out 0.2s; }
+    .dot-3 { animation: dotPulse 1.3s infinite ease-in-out 0.4s; }
+
+    pre code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+  </style>
+</head>
+<body class="h-full bg-ios-lightBg dark:bg-ios-darkBg text-neutral-900 dark:text-neutral-100 font-sans antialiased overflow-hidden transition-colors duration-200">
+
+  <!-- ==================== MAIN APP CONTAINER ==================== -->
+  <div id="app" class="h-[100dvh] flex flex-col w-full max-w-lg mx-auto relative overflow-hidden bg-ios-lightBg dark:bg-ios-darkBg sm:border-x sm:border-ios-lightBorder sm:dark:border-ios-darkBorder shadow-2xl">
+    
+    <!-- ==================== VIEW 1: BOT DIRECTORY ==================== -->
+    <section id="view-bots" class="flex-1 flex flex-col h-full w-full overflow-hidden">
+      <!-- Navbar -->
+      <header class="safe-top px-4 pb-3 flex items-center justify-between border-b border-ios-lightBorder dark:border-ios-darkBorder bg-ios-lightBg/90 dark:bg-ios-darkBg/90 backdrop-blur-xl z-10 sticky top-0">
+        <div>
+          <span class="text-[11px] font-bold uppercase tracking-wider text-ios-blue">Studio</span>
+          <h1 class="text-2xl font-black tracking-tight">Characters</h1>
+        </div>
+        
+        <div class="flex items-center gap-2">
+          <!-- Theme Toggle -->
+          <button type="button" id="btn-toggle-theme" aria-label="Toggle Theme" class="p-2.5 rounded-full bg-neutral-200/80 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 active:scale-90 transition-transform cursor-pointer">
+            <span id="theme-icon-sun" class="app-hidden text-sm leading-none">☀️</span>
+            <span id="theme-icon-moon" class="text-sm leading-none">🌙</span>
+          </button>
+
+          <!-- Settings -->
+          <button type="button" id="btn-open-settings" aria-label="Settings" class="p-2.5 rounded-full bg-neutral-200/80 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 active:scale-90 transition-transform cursor-pointer">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 
